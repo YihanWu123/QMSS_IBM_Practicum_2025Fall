@@ -2,3 +2,4 @@
 This project was conducted as part of the QMSS Practicum Course at Columbia University, in partnership with IBM.
 
 Xinlei Cheng - xc2849@columbia.edu
+Yangming Hu - yh3934@columbia.edu
