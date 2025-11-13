@@ -32,10 +32,12 @@ for section in data["sections"]:
 df = pd.DataFrame(rows)
 print(f"{len(df)} text chunks for embedding.")
 
+# Transform unstructured text into machine readable embeddings
 model = SentenceTransformer("BAAI/bge-large-en-v1.5")  
 df["embedding"] = df["content"].apply(lambda x: model.encode(x).tolist())
+df.to_json("HHS_EPLC_embeddings.json", orient="records", indent=2, force_ascii=False)
 
-
+# Create a ChromaDB collection and add all your text + embeddings + metadata into it
 chroma_client = chromadb.PersistentClient(path="./chroma_eplc_policy")
 collection = chroma_client.get_or_create_collection("hhs_eplc_policy")
 
